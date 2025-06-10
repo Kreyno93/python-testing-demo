@@ -1,5 +1,6 @@
 import pytest
 from calc import add, subtract, multiply, divide
+from calc import square_root, power, factorial
 
 
 def test_add():
@@ -29,3 +30,36 @@ def test_divide():
 def test_divide_by_zero():
     with pytest.raises(ValueError, match="Cannot divide by Zero"):
         divide(5, 0)
+
+
+def test_square_root():
+    assert square_root(4) == 2
+    assert square_root(0) == 0
+    assert square_root(9) == 3
+    assert square_root(2) == 2**0.5
+
+
+def test_square_root_negative():
+    with pytest.raises(
+        ValueError, match="Cannot compute square root of negative number"
+    ):
+        square_root(-1)
+
+
+def test_power():
+    assert power(2, 3) == 8
+    assert power(5, 0) == 1
+    assert power(2, -2) == 0.25
+    assert power(0, 5) == 0
+
+
+def test_factorial():
+    assert factorial(0) == 1
+    assert factorial(1) == 1
+    assert factorial(5) == 120
+    assert factorial(3) == 6
+
+
+def test_factorial_negative():
+    with pytest.raises(ValueError, match="Cannot compute factorial of negative number"):
+        factorial(-3)
