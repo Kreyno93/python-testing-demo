@@ -23,14 +23,3 @@ jobs:
         run: |
           coverage run -m pytest
           coverage report --fail-under=80
-
-      - name: Generate HTML report
-        run: coverage html
-
-      - name: Upload coverage report (HTML)
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: coverage-report
-          path: htmlcov/
-          include-hidden-files: true
