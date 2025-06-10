@@ -33,3 +33,4 @@ jobs:
         with:
           name: coverage-report
           path: htmlcov/
+          include-hidden-files: true
