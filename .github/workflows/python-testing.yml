@@ -22,7 +22,10 @@ jobs:
       - name: Run tests with coverage
         run: |
           coverage run -m pytest
-          coverage report
+          coverage report --fail-under=80
+
+      - name: Generate HTML report
+        run: coverage html
 
       - name: Upload coverage report (HTML)
         if: always()
@@ -30,6 +33,3 @@ jobs:
         with:
           name: coverage-report
           path: htmlcov/
-          
-      - name: Generate HTML report
-        run: coverage html
